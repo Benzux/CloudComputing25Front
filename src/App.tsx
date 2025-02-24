@@ -42,8 +42,8 @@ function App() {
   return (
     <Layout style={{maxWidth: 
       width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
-      ? '550px'
-      : 'fit-content'
+      ? width
+      : 'min-content'
     }}>
       <div>
         <a href="https://pandas.pydata.org" target="_blank">
