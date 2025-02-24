@@ -7,7 +7,6 @@ export const ResponsiveSettings = {
 export const Layout = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 1500px;
     width: 100%;
     align-items: center;
     justify-self: center;

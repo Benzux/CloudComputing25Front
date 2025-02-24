@@ -40,7 +40,11 @@ function App() {
   
 
   return (
-    <Layout>
+    <Layout style={{maxWidth: 
+      width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
+      ? '550px'
+      : 'fit-content'
+    }}>
       <div>
         <a href="https://pandas.pydata.org" target="_blank">
           <img src={pandasLogo} className="logo pandas" alt="Pandas logo" />
