@@ -13,6 +13,7 @@ import { Layout } from './responsive'
 import { DataDiv } from './responsive'
 import useWindowSize from './windowSize'
 import { ResponsiveSettings } from './responsive';
+import { TextParagraph } from './responsive';
 
 function App() {
 
@@ -49,19 +50,23 @@ function App() {
         </a>
       </div>
       <h2>Sentiment Analysis on MyAnimeList reviews using Pandas</h2>
-      <div className="card">
-        <p>
+      <div className="card" style={{maxWidth: 
+        width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
+        ? '300px'
+        : 'fit-content'
+      }}>
+        <TextParagraph>
           This web application hosted on render.com serves as a visual tool for displaying the results of 
           a sentiment analysis model trained on anime reviews obtained from the site MyAnimeList.
-        </p>
-        <p>
+        </TextParagraph>
+        <TextParagraph>
           The sentiment analysis was trained on over 85 thousand reviews sourced from
            <a href="https://www.kaggle.com/datasets/stoicstatic/mal-top-10k-anime-details" target="_blank"> kaggle</a>.
            Below is shown the evaluation of the trained model in the form of a classification report table and a confusion matrix.
-        </p>
+        </TextParagraph>
       </div>
       <DataDiv style={{flexDirection: 
-        width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
+        width <= 1100
         ? 'column'
         : 'row'
       }}>
