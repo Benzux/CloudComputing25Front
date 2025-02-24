@@ -43,7 +43,7 @@ function App() {
     <Layout style={{maxWidth: 
       width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
       ? width
-      : 'min-content'
+      : 'fit-content'
     }}>
       <div>
         <a href="https://pandas.pydata.org" target="_blank">
@@ -56,7 +56,7 @@ function App() {
       <h2>Sentiment Analysis on MyAnimeList reviews using Pandas</h2>
       <div className="card" style={{maxWidth: 
         width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
-        ? '300px'
+        ? width
         : 'fit-content'
       }}>
         <TextParagraph>
@@ -74,7 +74,12 @@ function App() {
         ? 'column'
         : 'row'
       }}>
-        <TableContainer component={Paper} className='tablecontainer'>
+        <TableContainer component={Paper} className='tablecontainer' style={{maxWidth: 
+            width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
+            ? width
+            : 'fit-content'
+          }
+        }>
           <Table aria-label="classification report table" className='table'>
             <TableHead>
               <TableRow>
