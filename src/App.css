@@ -18,7 +18,6 @@
 }
 .tablecontainer {
   padding: 1em;
-  min-width: 300px;
   min-height: 373px;
   max-height: min-content;
 }

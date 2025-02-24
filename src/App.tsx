@@ -19,6 +19,9 @@ function App() {
 
   const { width } = useWindowSize();
 
+  // Filling the table with data. If this app included the model it is showcasing, these values would be pulled from there
+  // instead of being hardcoded like this
+  // Table creation based on the docs for Material UI
   function tableData(
     desc: string | null,
     precision: number | null,
@@ -40,6 +43,8 @@ function App() {
   
 
   return (
+    // This bit will pop up a lot. Basically, we use the function to get the current viewport size and determine how wide the 
+    // content should be at most based on that. On smaller screens, the max width is restricted to that width.
     <Layout style={{maxWidth: 
       width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
       ? width
