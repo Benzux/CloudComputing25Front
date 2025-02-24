@@ -10,8 +10,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Layout } from './responsive'
+import { DataDiv } from './responsive'
+import useWindowSize from './windowSize'
+import { ResponsiveSettings } from './responsive';
 
 function App() {
+
+  const { width } = useWindowSize();
 
   function tableData(
     desc: string | null,
@@ -54,7 +59,12 @@ function App() {
            <a href="https://www.kaggle.com/datasets/stoicstatic/mal-top-10k-anime-details" target="_blank"> kaggle</a>.
            Below is shown the evaluation of the trained model in the form of a classification report table and a confusion matrix.
         </p>
-        </div>
+      </div>
+      <DataDiv style={{flexDirection: 
+        width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
+        ? 'column'
+        : 'row'
+      }}>
         <TableContainer component={Paper} className='tablecontainer'>
           <Table aria-label="classification report table" className='table'>
             <TableHead>
@@ -83,8 +93,9 @@ function App() {
           </Table>
         </TableContainer>
         <img src={confusionMatrix} className="matrix" alt="Confusion Matrix" />
-      </Layout>
-    )
-  }
+      </DataDiv>
+    </Layout>
+  )
+}
 
 export default App
