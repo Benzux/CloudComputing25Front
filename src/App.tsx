@@ -1,5 +1,6 @@
 import pandasLogo from './assets/pandas_logo.png'
 import malLogo from './assets/mal.png'
+import confusionMatrix from './assets/confusion_matrix.png'
 import './App.css'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -53,7 +54,7 @@ function App() {
            Below is shown the evaluation of the trained model in the form of a classification report table and a confusion matrix.
         </p>
         </div>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className='table'>
           <Table sx={{minWidth: 650}} aria-label="classification report table">
             <TableHead>
               <TableRow>
@@ -80,7 +81,8 @@ function App() {
             </TableBody>
           </Table>
         </TableContainer>
-        </>
+        <img src={confusionMatrix} className="matrix" alt="Confusion Matrix" />
+      </>
     )
   }
 
