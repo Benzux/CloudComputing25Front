@@ -17,8 +17,12 @@
 .matrix {
   padding: 1em;
 }
-.table {
+.tablecontainer {
   padding: 1em;
+  min-width: 300px;
+  min-height: 373px;
+  max-width: fit-content;
+  max-height: min-content;
 }
 
 .card {

@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Layout } from './responsive'
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
   
 
   return (
-    <>
+    <Layout>
       <div>
         <a href="https://pandas.pydata.org" target="_blank">
           <img src={pandasLogo} className="logo pandas" alt="Pandas logo" />
@@ -54,11 +55,11 @@ function App() {
            Below is shown the evaluation of the trained model in the form of a classification report table and a confusion matrix.
         </p>
         </div>
-        <TableContainer component={Paper} className='table'>
-          <Table sx={{minWidth: 650}} aria-label="classification report table">
+        <TableContainer component={Paper} className='tablecontainer'>
+          <Table aria-label="classification report table" className='table'>
             <TableHead>
               <TableRow>
-                <TableCell></TableCell>
+                <TableCell align='right'></TableCell>
                 <TableCell align='right'>Precision</TableCell>
                 <TableCell align='right'>Recall</TableCell>
                 <TableCell align='right'>F1-Score</TableCell>
@@ -71,7 +72,7 @@ function App() {
                   key={row.desc}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell component='th' scope='row'>{row.desc}</TableCell>
+                  <TableCell align='right' component='th' scope='row'>{row.desc}</TableCell>
                   <TableCell align='right'>{row.precision}</TableCell>
                   <TableCell align='right'>{row.recall}</TableCell>
                   <TableCell align='right'>{row.f1_score}</TableCell>
@@ -82,7 +83,7 @@ function App() {
           </Table>
         </TableContainer>
         <img src={confusionMatrix} className="matrix" alt="Confusion Matrix" />
-      </>
+      </Layout>
     )
   }
 
