@@ -106,7 +106,12 @@ function App() {
             </TableBody>
           </Table>
         </TableContainer>
-        <img src={confusionMatrix} className="matrix" alt="Confusion Matrix" />
+        <img src={confusionMatrix} className="matrix" alt="Confusion Matrix" style = {{maxWidth: 
+            width <= parseInt(ResponsiveSettings.smallScreenMaxWidth.replace("px", ""),10)
+            ? width
+            : 'fit-content'
+          }
+        }/>
       </DataDiv>
     </Layout>
   )
