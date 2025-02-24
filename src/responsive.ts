@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ResponsiveSettings = {
-    smallScreenMaxWidth: "1000px"
+    smallScreenMaxWidth: "550px"
 }
 
 export const Layout = styled.div`
@@ -20,4 +20,10 @@ export const DataDiv = styled.div`
     max-width: max-content;
     align-items: center;
     justify-self: center;
+`
+
+export const TextParagraph = styled.p`
+    display: flexbox;
+    min-width: 200px;
+    align-items: center;
 `
