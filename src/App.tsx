@@ -1,7 +1,7 @@
-import pandasLogo from './assets/pandas_logo.png'
-import malLogo from './assets/mal.png'
-import confusionMatrix from './assets/confusion_matrix.png'
-import './App.css'
+import pandasLogo from './assets/pandas_logo.png';
+import malLogo from './assets/mal.png';
+import confusionMatrix from './assets/confusion_matrix.png';
+import './App.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,18 +9,37 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Layout } from './responsive'
-import { DataDiv } from './responsive'
-import useWindowSize from './windowSize'
+import { Layout } from './responsive';
+import { DataDiv } from './responsive';
+import useWindowSize from './windowSize';
 import { ResponsiveSettings } from './responsive';
 import { TextParagraph } from './responsive';
+import { sentimentAnalysis} from './fetch';
+import { useState } from "react";
 
 function App() {
 
   const { width } = useWindowSize();
+  // UseState to keep track of both the review that the user has written and the response sent by the backend
+  const [reviewValue, setReviewValue] = useState("");
+  const [response, setResponse] = useState<string | null>(null);
 
-  // Filling the table with data. If this app included the model it is showcasing, these values would be pulled from there
-  // instead of being hardcoded like this
+  const analyzeReview = async () => {
+    setResponse(null)
+
+    // If the review input box is empty, end the operation
+    if (!reviewValue.trim()) {
+      console.log("no review input")
+      setResponse("Please write at least something in the review first!");
+      return
+    }
+
+    // We call the fetch function and pass the user-inputted review to it, then update the UI
+    const modelResponse = await sentimentAnalysis(reviewValue);
+    setResponse("The sentiment analysis model determined that your review is: " + modelResponse)
+  };
+
+  // Filling the table with data.
   // Table creation based on the docs for Material UI
   function tableData(
     desc: string | null,
@@ -73,6 +92,21 @@ function App() {
            <a href="https://www.kaggle.com/datasets/stoicstatic/mal-top-10k-anime-details" target="_blank"> kaggle</a>.
            Below is shown the evaluation of the trained model in the form of a classification report table and a confusion matrix.
         </TextParagraph>
+        <TextParagraph>
+          The trained sentiment analysis model can be tested with the text box below. 
+          Just type some kind of review into it, as short or as long as you want, and press the button!
+        </TextParagraph>
+        <input 
+          type="text" 
+          id="reviewInput"
+          size={45}
+          value={reviewValue}
+          onChange={(e) => setReviewValue(e.target.value)}
+          placeholder='Type out a review text to have the model analyze it!'/><br></br>
+        <button id="sendReview" onClick={analyzeReview}>Analyze Review</button>
+        {response && (
+          <TextParagraph id='modelresponse'>{response}</TextParagraph>
+        )}
       </div>
       <DataDiv style={{flexDirection: 
         width <= 1100
